@@ -1,0 +1,29 @@
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCw5Ps26fT2bt-Lp-b2--2po84rCfWZtTc">
+</script>
+
+<script>
+function initialize() {
+  var mapProp = {
+    center:new google.maps.LatLng(51.508742,10.120850),
+    zoom:5,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function showPositions(){
+  alert('hi');
+    var positions = JSON.parse('{}');
+    console.log(positions);
+
+}
+</script>
+<h2>MAPS</h2>
+
+<button type="button" (click)="javascript:showPositions();">Show Positions</button>
+
+<div id="googleMap" style="width:500px;height:380px;"></div>
+
+</body>
