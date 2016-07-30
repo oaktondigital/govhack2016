@@ -1,4 +1,25 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 lang="en""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 lang="en""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9 lang="en""> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10 lang="en""> <![endif]-->
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- build:css css/styles.min.css -->
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+        <!-- endbuild -->
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCw5Ps26fT2bt-Lp-b2--2po84rCfWZtTc"></script>
+
+    </head>
 <h2>MAPS</h2>
 
 <button type="button" onclick="showPositions()">Show Positions</button>
@@ -62,9 +83,9 @@ function showCurrentLocation(){
         }
 }
 
- 
+
 function showPositions(){
-  
+
     // var positions = JSON.parse('{"l":"51.508742","long":"10.120850"}');
     // console.log('my current position is', positions);
  var markers=[
@@ -75,8 +96,8 @@ function showPositions(){
 
 var infoWindow = new google.maps.InfoWindow(), marker, i;
 var bounds = new google.maps.LatLngBounds();
-    
-    // Loop through our array of markers & place each one on the map  
+
+    // Loop through our array of markers & place each one on the map
     for( i = 0; i < markers.length; i++ ) {
       var markedPosn=markers[i];
       var position = new google.maps.LatLng(markedPosn.lat,markedPosn.lon);
@@ -87,7 +108,7 @@ var bounds = new google.maps.LatLngBounds();
             title: markedPosn.title
         });
 
-        // Allow each marker to have an info window    
+        // Allow each marker to have an info window
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
               console.log('m',marker);
@@ -103,5 +124,16 @@ var bounds = new google.maps.LatLngBounds();
 
 </script>
 
+<!--build:js js/jquery.min.js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<!-- endbuild -->
+<!--build:js js/main.min.js -->
+<script src="js/main.js"></script>
+<!-- endbuild -->
 
 
+<div class="closebutton">
+  <a href="aug.html"><i class="fa fa-arrow-circle-right"></i></a>
+</div>
+</body>
+</html>
