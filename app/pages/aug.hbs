@@ -171,7 +171,11 @@
                                 fetch(localUrl, myInit)
                                     .then(data => data.json())
                                     .then(json => getImage(json.data))
-                                    .then(image => addCreature(image));
+                                    .then(image => addCreature(image))
+                                    .catch(e => {
+                                        console.log("e", e);
+                                        addCreature(getImage("wombat"));
+                                    })
 
                             }
 
@@ -211,6 +215,7 @@
     <div class="closebutton">
         <a href="index.html"><i class="fa fa-times"></i></a>
     </div>
+    <script src="http://192.168.1.106:8081/target/target-script-min.js#anonymous"></script>
 
 </body>
 
