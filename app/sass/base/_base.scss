@@ -88,18 +88,21 @@ a {
   }
   .logo {
     padding-top: 75px;
+
+    @include respond-to(small) {
+      max-width: 100%;
+    }
   }
   p {
     padding-top: 25px;
+    padding-bottom: 20px;
     width: 75%;
     text-align: center;
     margin: 0 auto;
   }
   .see-more__wrap {
-    position: absolute;
-    bottom: 50px;
-    display: block;
     width: 100%;
+
     a {
       &:hover,
       &:focus {
@@ -127,8 +130,13 @@ a {
       // transform: translateX(-50%);
     }
   }
+
+
   p {
-    width: 50%;
+    @include respond-to(large) {
+      width: 50%;
+    }
+
     &:nth-child(odd) {
       float: right;
     }
@@ -149,13 +157,24 @@ a {
 
 .section {
   padding: 45px;
+
+  @include respond-to(small) {
+    padding: 40px 0;
+
+    p {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
   text-align: center;
   .heading {
     display: inline-block;
-    padding: 20px 75px;
+    padding: 0 75px 20px 75px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #353434;
   }
-  img {
+  img:not(.actual) {
     padding: 70px 0 25px;
     width: 100%;
   }
