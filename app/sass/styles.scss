@@ -1,51 +1,35 @@
-// /*
-//  * Please read the readme.md file
-//  * in the root of the scss directory
-//  * for further explanation on the structure of this project
-//  *
-// */
-//
-//
-// // Utilities and variables
-// // -------
-// @import "utils/variables";
-// @import "utils/mixins/**/*.scss";
-// @import "utils/functions";
-//
-//
-// // Vendors
-// // ---------
-// @import "vendors/vendors";
-//
-//
-// // Reset and base files
-// // --------------------
-// @import "base/reset";
-// @import "base/base";
-//
-//
-// /// Layouts
-// /// -------
-// @import "layouts/footer";
-// @import "layouts/forms";
-// @import "layouts/header";
-// @import "layouts/navigation";
-//
-//
-// // Components
-// // ----------
-// // For individual, isolated components
-// @import "components/buttons";
-// @import "components/carousel";
-//
-//
-// // Page Specific Overrides
-// // -----------------------
-// // Rarely ever used. Exceptions may be homepage, for example
-// @import "pages/homepage";
-// @import "pages/contact";
-//
-//
-// // Themes
-// // -------
-// //@import "themes/..";
+@charset 'UTF-8';
+
+// 1. Configuration and helpers
+@import
+  'utils/variables',
+  'utils/functions',
+  'utils/mixins';
+
+// 2. Vendors
+@import
+  'vendor/vendor';
+
+// 3. Base stuff
+@import
+  'base/base',
+  'base/fonts',
+  'base/typography',
+  'base/helpers';
+
+// 4. Layout-related sections
+@import
+  'layout/header',
+  'layout/footer';
+
+// 5. Components
+@import
+  'components/button';
+
+// 6. Page-specific styles
+@import
+  'pages/home';
+
+// 7. Themes
+@import
+  'themes/default';
