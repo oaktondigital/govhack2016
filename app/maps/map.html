@@ -1,7 +1,11 @@
 
+<h2>MAPS</h2>
+
+<button type="button" onclick="showPositions()">Show Positions</button>
+<br/><br/><br/>
+<div id="googleMap" style="width:500px;height:380px;"></div>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCw5Ps26fT2bt-Lp-b2--2po84rCfWZtTc">
 </script>
-
 <script>
   var map;
   var infoWindow;
@@ -26,7 +30,7 @@ function initialize() {
             infoWindow.setContent('Current location.');
             map.setCenter(pos);
           }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
+           // handleLocationError(true, infoWindow, map.getCenter());
           });
         } else {
           // Browser doesn't support Geolocation
@@ -38,36 +42,36 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
 
-  var markers=[
-    {'lat':'149.122853','long':'-35.304758'}  
-  ]
+ 
 function showPositions(){
   
-    var positions = JSON.parse('{"l":"51.508742","long":"10.120850"}');
-    console.log('my current position is', positions);
-
+    // var positions = JSON.parse('{"l":"51.508742","long":"10.120850"}');
+    // console.log('my current position is', positions);
+ var markers=[
+{lat:"-35.304758000", lon:"149.122853000"},//,//149.122853,-35.304758
+{lat:"-35.304797000", lon:"149.122887000"},
+{lat:"-35.304806000", lon:"149.122895000"}
+];
 
 var infoWindow = new google.maps.InfoWindow(), marker, i;
+var bounds = new google.maps.LatLngBounds();
     
     // Loop through our array of markers & place each one on the map  
     for( i = 0; i < markers.length; i++ ) {
-      var mrkPsn=markers[i];
-        var position = new google.maps.LatLng(mrkPsn.lat, mrkPsn.long);
-       // bounds.extend(position);
+      var markedPosn=markers[i];
+      var position = new google.maps.LatLng(markedPosn.lat,markedPosn.lon);
+        bounds.extend(position);
         marker = new google.maps.Marker({
             position: position,
             map: map,
-            title: 'marker'
+            title: 'Location data'
         });
+        map.fitBounds(bounds);
 
-        console.log('psn',mrkPsn);
 }
 }
 
 </script>
 
-<h2>MAPS</h2>
 
-<button type="button" onclick="showPositions()">Show Positions</button>
-<br/><br/><br/>
-<div id="googleMap" style="width:500px;height:380px;"></div>
+
