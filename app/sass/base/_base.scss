@@ -8,10 +8,15 @@
 //  */
 html {
   box-sizing: border-box;
+  overflow-x: hidden;
   // Below: Responsive typography using the rem mixin
   @media screen and (max-width: 767px) {
     font-size: 87.5%;
   }
+}
+
+.clearfix {
+  @extend %clearfix;
 }
 
 // /**
@@ -31,7 +36,20 @@ html {
 body {
   position: relative;
   min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+
 }
+a {
+  color: #fff;
+  text-decoration: none;
+  &:hover,
+  &:active {
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+  }
+}
+
 #container {
 	position: absolute;
 	left: 0;
@@ -40,4 +58,105 @@ body {
 	right: 0;
 	overflow: hidden;
   //z-index: 1;
+}
+
+.nav {
+  ul {
+  }
+  li{
+  	display: inline-block;
+  	font-size: 18px;
+  	font-family: arial, sans-serif;
+  	color: #000;
+  	justify-content: right;
+    background: transparent;
+    padding: 10px 5px;
+  }
+}
+
+.intro {
+  min-height: 100vh;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  position: relative;
+  .banner {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+  .logo {
+    padding-top: 75px;
+  }
+  p {
+    padding-top: 25px;
+    width: 75%;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .see-more__wrap {
+    position: absolute;
+    bottom: 50px;
+    display: block;
+    width: 100%;
+    a {
+      &:hover,
+      &:focus {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.about {
+	background-color: #e6e7e8;
+}
+
+.features {
+	background-color: #253a67;
+  color: #fff;
+  .item {
+    width: 100%;
+    position: relative;
+    img {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      padding: 0;
+      transform: translateX(-50%);
+    }
+  }
+  p {
+    width: 50%;
+    &:nth-child(odd) {
+      float: right;
+    }
+  }
+  // img {
+  //   float: left;
+  // }
+}
+
+.start-playing {
+	background-color: #e6e7e8;
+}
+
+.contact {
+	background-color: #353434;
+  color: #fff;
+}
+
+.section {
+  padding: 45px;
+  text-align: center;
+  .heading {
+    display: inline-block;
+    padding: 20px 75px;
+    border-bottom: 1px solid #353434;
+  }
+  img {
+    padding: 70px 0 25px;
+    width: 100%;
+  }
 }

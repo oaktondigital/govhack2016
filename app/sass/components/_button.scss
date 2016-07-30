@@ -2,3 +2,20 @@
 // ----------
 // This file contains all styles related to the button component.
 // ==========
+
+.btn {
+  color: #FDCE0D;
+  background: #353434;
+  padding: 30px 50px;
+  display: inline-block;
+  &:hover,
+  &:focus {
+    color: darken(#FDCE0D, 20%);
+    background: darken(#353434, 20%);
+    text-decoration: none;
+  }
+}
+
+a.btn {
+  color: #FDCE0D;
+}
