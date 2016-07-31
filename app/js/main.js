@@ -71,10 +71,9 @@ function showPositions() {
 
                 // Allow each marker to have an info window
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
-                        infoWindow.setContent('<a href="aug.html">link</a>');
-                        infoWindow.open(map, marker);
-                    }
+                  return function () {
+                        window.location.href = 'aug.html?lat=' + markerPosition.lat + '&lng=' + markerPosition.lon;
+                  }
                 })(marker, i));
 
                 map.fitBounds(bounds);
