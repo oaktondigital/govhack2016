@@ -1,0 +1,40 @@
+.menu {
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 60px;
+  background: rgba(0,0,0,0.5);
+  text-align: center;
+  padding-top: 5px;
+
+  .fa {
+    color: #fff;
+    font-size: 34px;
+    display: block;
+    color: $color-yellow;
+  }
+  .close {
+    font-size: 12px;
+    float: left;
+    text-align: center;
+    margin-left: 15px;
+  }
+  .nearme {
+    font-size: 12px;
+    float: right;
+    text-align: center;
+    margin-right: 15px;
+    position: relative;
+    .icon:before {
+      position: relative;
+      display: block;
+      position: relative;
+      margin: 4px auto 0;
+      left: auto;
+    }
+    .icon-kangaroo:before {
+      background-image: url(../img/kangaroo.png);
+    }
+  }
+}
