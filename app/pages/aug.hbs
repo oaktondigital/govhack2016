@@ -109,21 +109,49 @@
                             var url = 'https://sheltered-caverns-42351.herokuapp.com/creatures';
 
                             function getPositionAndCreature() {
-                                if (navigator.geolocation) {
-                                    navigator.geolocation.getCurrentPosition(function(position) {
-                                        var position = {
-                                            lat: position.coords.latitude,
-                                            lng: position.coords.longitude
-                                        };
-                                        getCreature(position);
-                                    }, function() {
-                                        // handleLocationError(true, infoWindow, map.getCenter());
-                                    });
+                                var parseQueryString = function() {
+
+                                    var str = window.location.search;
+                                    var objURL = {};
+
+                                    str.replace(
+                                        new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+                                        function($0, $1, $2, $3) {
+                                            objURL[$1] = $3;
+                                        }
+                                    );
+                                    return objURL;
+                                };
+
+                                //Example how to use it:
+                                var params = parseQueryString();
+                                console.log(params["lat"], params["lng"]);
+
+                                if (params.length > 0) {
+                                    var position = {
+                                        lat: params["lat"],
+                                        lng: params["lng"]
+                                    };
+                                    getCreature(position);
                                 } else {
-                                    // Browser doesn't support Geolocation
-                                    //handleLocationError(false, infoWindow, map.getCenter());
+                                    if (navigator.geolocation) {
+                                        navigator.geolocation.getCurrentPosition(function(position) {
+                                            var position = {
+                                                lat: position.coords.latitude,
+                                                lng: position.coords.longitude
+                                            };
+                                            getCreature(position);
+                                        }, function() {
+                                            // handleLocationError(true, infoWindow, map.getCenter());
+                                        });
+                                    } else {
+                                        // Browser doesn't support Geolocation
+                                        //handleLocationError(false, infoWindow, map.getCenter());
+                                    }
                                 }
+
                             }
+
 
                             function addCreature(creatureImage) {
                                 awe.projections.add({
