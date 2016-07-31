@@ -9,7 +9,8 @@
     	color: #000;
     	justify-content: right;
       background: transparent;
-      padding: 10px 5px;
+      padding: 10px 25px;
+      float: left;
     }
   }
 
@@ -17,7 +18,7 @@
     min-height: 100vh;
     text-align: center;
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -47,12 +48,13 @@
   .features {
   	background-color: #253a67;
     color: #fff;
+    &.section > .heading {
+      border-bottom: 1px solid #e6e7e8;
+    }
     .item {
       width: 100%;
       position: relative;
     }
-
-
     p {
       @include respond-to(large) {
         width: 50%;
@@ -71,6 +73,9 @@
   .contact {
   	background-color: #353434;
     color: #fff;
+    &.section > .heading {
+      border-bottom: 1px solid #e6e7e8;
+    }
   }
 
   .section {
@@ -94,7 +99,14 @@
     }
     img:not(.actual) {
       padding: 70px 0 25px;
-      width: 100%;
+      width: 60%;
     }
   }
+}
+
+img.actual {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 15px;
+
 }
