@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Place favicon.ico in the root directory -->
-
     <!-- build:css css/styles.min.css -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
@@ -25,7 +24,7 @@
     <div id="container"></div>
     <script type="text/javascript" src="js/awe-loader-min.js"></script>
     <script type="text/javascript">
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
 
 
             window.awe.init({
@@ -46,7 +45,7 @@
                         color: 0xFFFFFF
                     }, ],
                 },
-                ready: function() {
+                ready: function () {
                     // load js files based on capability detection then setup the scene if successful
                     awe.util.require([{
                         capabilities: ['gum', 'gyro', 'webgl'],
@@ -56,7 +55,7 @@
                             'js/awe-standard-object_clicked.js', // object click/tap handling plugin
                             'js/awe.geo_ar.js', // geo ar plugin
                         ],
-                        success: function() {
+                        success: function () {
                             // limit demo to supported devices
                             // NOTE: only Chrome and Firefox has implemented the DeviceOrientation API in a workable way
                             //       so for now we are excluding all others to make sure your first experience is a happy one
@@ -74,7 +73,7 @@
                             // setup and paint the scene
                             window.awe.setup_scene();
                             // setup some code to handle when an object is clicked/tapped
-                            window.addEventListener('object_clicked', function(e) {
+                            window.addEventListener('object_clicked', function (e) {
                                 var p = awe.projections.view(e.detail.projection_id);
                                 awe.projections.update({ // rotate clicked object by 180 degrees around x and y axes over 10 seconds
                                     data: {
@@ -109,21 +108,49 @@
                             var url = 'https://sheltered-caverns-42351.herokuapp.com/creatures';
 
                             function getPositionAndCreature() {
-                                if (navigator.geolocation) {
-                                    navigator.geolocation.getCurrentPosition(function(position) {
-                                        var position = {
-                                            lat: position.coords.latitude,
-                                            lng: position.coords.longitude
-                                        };
-                                        getCreature(position);
-                                    }, function() {
-                                        // handleLocationError(true, infoWindow, map.getCenter());
-                                    });
+                                var parseQueryString = function () {
+
+                                    var str = window.location.search;
+                                    var objURL = {};
+
+                                    str.replace(
+                                        new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+                                        function ($0, $1, $2, $3) {
+                                            objURL[$1] = $3;
+                                        }
+                                    );
+                                    return objURL;
+                                };
+
+                                //Example how to use it:
+                                var params = parseQueryString();
+                                console.log(params["lat"], params["lng"]);
+
+                                if (params.length > 0) {
+                                    var position = {
+                                        lat: params["lat"],
+                                        lng: params["lng"]
+                                    };
+                                    getCreature(position);
                                 } else {
-                                    // Browser doesn't support Geolocation
-                                    //handleLocationError(false, infoWindow, map.getCenter());
+                                    if (navigator.geolocation) {
+                                        navigator.geolocation.getCurrentPosition(function (position) {
+                                            var position = {
+                                                lat: position.coords.latitude,
+                                                lng: position.coords.longitude
+                                            };
+                                            getCreature(position);
+                                        }, function () {
+                                            // handleLocationError(true, infoWindow, map.getCenter());
+                                        });
+                                    } else {
+                                        // Browser doesn't support Geolocation
+                                        //handleLocationError(false, infoWindow, map.getCenter());
+                                    }
                                 }
+
                             }
+
 
                             function addCreature(creatureImage) {
                                 awe.projections.add({
@@ -174,7 +201,7 @@
                                     .then(image => addCreature(image))
                                     .catch(e => {
                                         console.log("e", e);
-                                        addCreature(getImage("wombat"));
+                                        addCreature(getImage("Australian_wood_duck_-_male"));
                                     })
 
                             }
@@ -184,8 +211,33 @@
                                     case 'wombat':
                                         return 'img/wombat.png';
                                         break;
+                                    case 'kangaroo':
+                                        return 'img/kangaroo.png';
+                                        break;
+                                    case 'australian wood duck':
+                                    case 'black swan':
+                                    case 'wombat':
+                                    case 'crimson rosella':
+                                    case 'australian pelican':
+                                        return 'img/Australian_wood_duck_-_male.png';
+                                        break;
+                                    case 'black swan':
+                                    case 'crimson rosella':
+                                    case 'australian pelican':
+                                    case 'australian wood duck':
+                                        return 'img/black_swan.png';
+                                        break;
+                                    case 'crimson rosella':
+                                    case 'black swan':
+                                        return 'img/Crimson-Rosella.png';
+                                        break;
+                                    case 'australian pelican':
+                                    case 'black swan':
+                                    case 'australian wood duck':
+                                        return 'img/pelican.png';
+                                        break;
                                     default:
-                                        return 'img/wombat.png';
+                                        return 'img/Australian_wood_duck_-_male.png';
                                 }
                             }
 
@@ -196,7 +248,7 @@
                     }, { // else create a fallback
                         capabilities: [],
                         files: [],
-                        success: function() {
+                        success: function () {
                             document.getElementById('container').innerHTML =
                                 '<p>This demo currently requires a standards compliant mobile browser (e.g. Firefox on Android). NOTE: iOS does not currently support WebGL or WebRTC and has not implemented the DeviceOrientation API correctly. Please see <a href="http://lists.w3.org/Archives/Public/public-geolocation/2014Jan/0000.html">this post to the W3C GeoLocation Working Group</a> for more detailed information.</p>';
                             return;
@@ -222,6 +274,7 @@
       <div class="menu-open">
         <button class="close-menu"><i class="fa fa-times"></i></button>
       </div>
+
     </div>
 </body>
 
