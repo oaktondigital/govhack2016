@@ -1,0 +1,7 @@
+.logo {
+  padding: 4em 1em 0;
+
+  @include respond-to(small) {
+    max-width: 100%;
+  }
+}

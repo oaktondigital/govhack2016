@@ -26,11 +26,14 @@
 // 5. Components
 @import
   'components/button',
-  'components/closebutton';
+  'components/closebutton',
+  'components/banner',
+  'components/logo';
 
 // 6. Page-specific styles
 @import
-  'pages/home';
+  'pages/home',
+  'pages/about';
 
 // 7. Themes
 @import

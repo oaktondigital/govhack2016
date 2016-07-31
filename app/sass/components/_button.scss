@@ -4,18 +4,62 @@
 // ==========
 
 .btn {
-  color: #FDCE0D;
-  background: #353434;
+  color: $color-yellow;
+  background: $color-brown;
   padding: 30px 50px;
   display: inline-block;
   &:hover,
   &:focus {
-    color: darken(#FDCE0D, 20%);
-    background: darken(#353434, 20%);
+    color: darken($color-yellow, 20%);
+    background: darken($color-brown, 20%);
     text-decoration: none;
   }
 }
 
 a.btn {
-  color: #FDCE0D;
+  color: $color-yellow;
+}
+
+.btn-primary {
+  padding: 1em 2em;
+  border: solid 1px $color-yellow;
+  background: transparent;
+  color: $color-yellow;
+  background-color: $color-brown;
+  display: block;
+  width: 75%;
+  margin: 25px auto;
+  font-size: 16px;
+  text-decoration: none;
+  position: relative;
+  text-align: center;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    //color: darken($color-yellow, 20%);
+    border: 1px solid lighten($color-yellow, 20%);
+    background: lighten($color-brown, 20%)
+  }
+  .fa {
+  }
+}
+.icon-hiker:before {
+  background-image: url(../img/hiker.png);
+}
+.icon-compass:before {
+  background-image: url(../img/compass.png);
+}
+.icon-info:before {
+  background-image: url(../img/info.png);
+}
+.icon:before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  margin-right: 25px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: auto;
 }
