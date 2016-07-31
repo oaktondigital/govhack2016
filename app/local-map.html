@@ -30,6 +30,8 @@
         var url = "http://10.67.0.145:3000/creatures/";
 
 
+      
+
         function initialize() {
 
 
@@ -90,8 +92,7 @@
                               // Allow each marker to have an info window
                               google.maps.event.addListener(marker, 'click', (function (marker, i) {
                                   return function () {
-                                      infoWindow.setContent('<a href="aug.html">link</a>');
-                                      infoWindow.open(map, marker);
+                                        window.location.href = 'aug.html?lat=' + markerPosition.lat + '&lng=' + markerPosition.lon;
                                   }
                               })(marker, i));
 
