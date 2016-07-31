@@ -207,74 +207,33 @@
                             }
 
                             function getImage(animal) {
-                                document.getElementById('animalCont').innerHTML = animal;
                                 switch (animal.toLowerCase()) {
                                     case 'wombat':
                                         return 'img/wombat.png';
                                         break;
                                     case 'kangaroo':
-                                    case 'Crested Pigeon',                                    
-                                    case 'Masked Lapwing':
-                                    case 'Magpie-lark':
-                                    case 'Black Swan':
-                                    case 'Australian Coot':
-                                    case 'Red-rumped Parrot':
-                                    case 'Welcome Swallow':
                                         return 'img/kangaroo.png';
                                         break;
                                     case 'australian wood duck':
                                     case 'black swan':
                                     case 'wombat':
-                                    case 'Willie Wagtail':
-                                    case 'Superb Fairy-wren':
-                                    case 'Brown Thornbill':
-                                    case 'Weebill':
-                                    case 'Australian Magpie':
-                                    case 'European Goldfinch':
-                                    case 'Scarlet Robin':
-                                    case 'Crimson Rosella':
-                                    case 'Pied Currawong':
                                     case 'crimson rosella':
                                     case 'australian pelican':
-                                    case 'Masked Lapwing':
                                         return 'img/Australian_wood_duck_-_male.png';
                                         break;
                                     case 'black swan':
                                     case 'crimson rosella':
-                                    case 'Pied Butcherbird':
-                                    case 'Varied Sittella':
-                                    case 'Western Gerygone':
-                                    case 'Brown-headed Honeyeater':
-                                    case 'Eaglehawk':
-                                    case 'Brown Songlark'
                                     case 'australian pelican':
                                     case 'australian wood duck':
-                                    case 'Little Wattlebird':
                                         return 'img/black_swan.png';
                                         break;
                                     case 'crimson rosella':
                                     case 'black swan':
-                                    case 'Little Wattlebird':
-                                    case 'Australian King-parrot':
-                                    case 'Eastern Yellow Robin':
-                                    case 'Magpie-lark':
-                                    case 'Splendid Fairy-wren':
-                                    case 'Gang-gang Cockatoo':
-                                    case 'Crested Pigeon':
-                                    case 'Galah':
                                         return 'img/Crimson-Rosella.png';
                                         break;
                                     case 'australian pelican':
                                     case 'black swan':
-                                    case 'Rainbow Bee-eater':
-                                    case 'Eastern Spinebill':
-                                    case 'Spotted Pardalote':
-                                    case 'Weebill':
-                                    case 'Superb Fairy-wren':
-                                    case 'Sulphur-crested Cockatoo':
-                                    case 'Australian Magpie':
-                                    case 'White-eared Honeyeater':
-                                    case 'australian wood duck':                                    
+                                    case 'australian wood duck':
                                         return 'img/pelican.png';
                                         break;
                                     default:
@@ -308,14 +267,13 @@
 
     <script src="http://192.168.1.106:8081/target/target-script-min.js#anonymous"></script>
     <div class="menu">
-        <div class="menu-bar">
-            <p id="animalCont"></p>
-            <a class="close" href="map.html"><i class="fa fa-times"></i>close</a>
-            <button class="nearme"><i class="icon icon-kangaroo"></i>what's near me</a>
-        </div>
-        <div class="menu-open">
-            <button class="close-menu"><i class="fa fa-times"></i></button>
-        </div>
+      <div class="menu-bar" >
+        <a class="close" href="map.html"><img style="width: 50px; margin: 0 auto; display: block;" src="img/close.png" alt="" />
+</a>
+      </div>
+      <div class="menu-open">
+        <button class="close-menu"><i class="fa fa-times"></i></button>
+      </div>
     </div>
 </body>
 

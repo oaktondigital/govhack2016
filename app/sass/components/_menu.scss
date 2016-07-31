@@ -4,7 +4,7 @@
   z-index: 9999;
   width: 100%;
   //height: 60px;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.85);
   text-align: center;
   padding-top: 5px;
   border-top: 1px solid $color-yellow;
@@ -14,6 +14,14 @@
   &-isopen {
     transform: translateY(-100vh) !important;
   }
+  // .images {
+  //   padding-top: 20px;
+  //   // img {
+  //   //   width: 33.33%;
+  //   //   padding: 15px;
+  //   //   float: left;
+  //   // }
+  // }
   .fa {
     color: #fff;
     font-size: 34px;
@@ -52,15 +60,45 @@
 
 .menu-bar {
   height: 60px;
+  .fa {
+    padding-top: 8px;
+    font-size: 26px;
+  }
 }
 .menu-open {
   padding: 15px;
   position: relative;
   height: 100vh;
+  h3 {
+    color: #fff;
+    text-align: left;
+    font-size: 22px;
+  }
+  .animal {
+    padding: 15px;
+    margin-top: 15px;
+    @extend %clearfix;
+    width: 33.33%;
+    float: left;
+    img {
+      width: 75%;
+      margin: 0 auto;
+    }
+    p {
+      color: #fff;
+      text-align: center;
+    }
+  }
   .close-menu {
     position: absolute;
     bottom: 35px;
-    //width: 100%;
+    width: 100%;
+    display: block;
     //text-align: center;
+    margin-left: -15px;
+    img {
+      margin: 0 auto;
+      width: 50px;
+    }
   }
 }
