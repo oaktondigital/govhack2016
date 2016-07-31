@@ -1,13 +1,19 @@
 .menu {
   position: fixed;
-  bottom: 0;
+  bottom: -100vh;
   z-index: 9999;
   width: 100%;
-  height: 60px;
-  background: rgba(0,0,0,0.5);
+  //height: 60px;
+  background: rgba(0,0,0,0.7);
   text-align: center;
   padding-top: 5px;
-
+  border-top: 1px solid $color-yellow;
+  height: calc(100vh + 60px);
+  transform: translateY(0);
+  transition: transform 0.3s;
+  &-isopen {
+    transform: translateY(-100vh) !important;
+  }
   .fa {
     color: #fff;
     font-size: 34px;
@@ -19,6 +25,10 @@
     float: left;
     text-align: center;
     margin-left: 15px;
+    &:hover,
+    &:focus {
+      border-bottom: 0;
+    }
   }
   .nearme {
     font-size: 12px;
@@ -26,6 +36,7 @@
     text-align: center;
     margin-right: 15px;
     position: relative;
+    color: #fff;
     .icon:before {
       position: relative;
       display: block;
@@ -36,5 +47,20 @@
     .icon-kangaroo:before {
       background-image: url(../img/kangaroo.png);
     }
+  }
+}
+
+.menu-bar {
+  height: 60px;
+}
+.menu-open {
+  padding: 15px;
+  position: relative;
+  height: 100vh;
+  .close-menu {
+    position: absolute;
+    bottom: 35px;
+    //width: 100%;
+    //text-align: center;
   }
 }

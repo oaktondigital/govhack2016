@@ -2,7 +2,28 @@ $(document).ready(function() {
     smoothScroll();
     initialize();
     showPositions();
+
+    /*
+     * Open the menu
+     */
+     $( '.nearme' ).click(function() {
+       $('.menu').addClass('menu-isopen');
+     });
+      // if ($('.menu').hasClass('menu-isopen')) {
+      //   $('.menu').removeclass('menu-isopen');
+      // } else {
+      // }
+    /*
+     * Close the menu
+     */
+     $( '.close-menu' ).click(function() {
+        $('.menu').removeClass('menu-isopen');
+    });
 });
+
+
+
+
 
 var map;
 var infoWindow;
