@@ -90,22 +90,11 @@
         }
 
         function getPositions() {
-            var positions = [];
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    positions = JSON.parse(xmlhttp.responseText);
 
-                }
-            };
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send();
-            //return positions;
-            return [
-           { title: "A", lat: "-35.304758000", lon: "149.122853000" },//,//149.122853,-35.304758
-           { title: "B", lat: "-35.304797000", lon: "149.122887000" },
-           { title: "C", lat: "-35.304806000", lon: "149.122895000" },
-           { title: "D", lat: "-35.305006000", lon: "149.122897000" }
-            ];
+             var url = "https://sheltered-caverns-42351.herokuapp.com/beacons/activities"
+             return fetch(url)
+              .then(data =>  data.json());
+
         }
 
 
@@ -113,34 +102,40 @@
 
             markCentenaryTrail();
 
-            var markers = getPositions();
+            getPositions()
+              .then(data => {
+                var markers = markers = data ? data : [];
 
-            var infoWindow = new google.maps.InfoWindow(), marker, i;
-            var bounds = new google.maps.LatLngBounds();
+                var infoWindow = new google.maps.InfoWindow(), marker, i;
+                var bounds = new google.maps.LatLngBounds();
 
-            // Loop through our array of markers & place each one on the map
-            for (i = 0; i < markers.length; i++) {
-                var markedPosn = markers[i];
-                var position = new google.maps.LatLng(markedPosn.lat, markedPosn.lon);
-                bounds.extend(position);
-                marker = new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    animation: google.maps.Animation.BOUNCE,
-                    title: markedPosn.title
-                });
+                markers.map(markerPosition => {
+                  var position = new google.maps.LatLng(markerPosition.lat, markerPosition.lon);
+                  bounds.extend(position);
+                  marker = new google.maps.Marker({
+                      position: position,
+                      map: map,
+                      animation: google.maps.Animation.DROP,
+                      title: markerPosition.title
+                  });
 
-                // Allow each marker to have an info window
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        console.log('m', marker);
-                        infoWindow.setContent('<a href="aug.html">link</a>');
-                        infoWindow.open(map, marker);
-                    }
-                })(marker, i));
+                  // Allow each marker to have an info window
+                  google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                      return function () {
+                          infoWindow.setContent('<a href="aug.html">link</a>');
+                          infoWindow.open(map, marker);
+                      }
+                  })(marker, i));
 
-                map.fitBounds(bounds);
-            }
+                  map.fitBounds(bounds);
+                })
+
+
+
+              })
+              .catch((err) => console.log(err));
+
+
         }
 
         function markCentenaryTrail() {
